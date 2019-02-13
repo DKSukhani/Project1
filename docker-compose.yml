@@ -8,7 +8,6 @@ services:
     volumes:
       - .:/home
     depends_on:
-      - redis
       - db
     environment:
       FLASK_APP: "application"
@@ -29,10 +28,6 @@ services:
     networks:
       - webnet
   
-  redis:
-    image: redis
-    networks:
-      - webnet
 
 networks:
   webnet:
