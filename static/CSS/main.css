@@ -2037,12 +2037,18 @@ nav a:hover {
   }
 }
 
+.banner-content {
+  float: left;
+}
+
+
 .banner-content h1 {
   font-size: 60px;
   font-weight: 600;
   line-height: 1.2em;
   margin-bottom: 20px;
   color: #f5204b;
+  text-align: left;
 }
 
 @media (max-width: 767px) {
