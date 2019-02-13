@@ -6,18 +6,16 @@ from flask import jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-# engine = create_engine(
-#     "postgresql://dipesh:dipesh123@db:5432/flights")
-# db = scoped_session(sessionmaker(bind=engine))
+engine = create_engine(
+    "postgresql://dipesh:dipesh123@db:5432/flights")
+db = scoped_session(sessionmaker(bind=engine))
 
 app = Flask(__name__)
-redis = Redis(host='redis', port=6379)
 app.static_folder = 'static'
 
 
 @app.route("/")
 def index():
-    redis.incr('hits')
     return render_template("index.html")
 
 
