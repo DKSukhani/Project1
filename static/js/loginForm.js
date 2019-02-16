@@ -26,6 +26,8 @@ $('.form').find('input, textarea').on('keyup blur focus', function (e) {
 
 });
 
+// this is only to show the relevant div
+
 $('.tab a').on('click', function (e) {
 
     e.preventDefault();
@@ -35,7 +37,7 @@ $('.tab a').on('click', function (e) {
 
     target = $(this).attr('href');
 
-    $('.tab-content > div').not(target).hide();
+    // $('.tab-content > div').not(target).hide();
 
     $(target).fadeIn(600);
 

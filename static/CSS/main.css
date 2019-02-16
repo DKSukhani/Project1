@@ -2028,7 +2028,7 @@ nav a:hover {
 }
 
 .banner-area .overlay-bg {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 767px) {
