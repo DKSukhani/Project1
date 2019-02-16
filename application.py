@@ -1,6 +1,8 @@
 import os
 
 from flask import Flask, render_template, request
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 from flask import jsonify
 from sqlalchemy import create_engine
