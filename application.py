@@ -28,17 +28,15 @@ def index():
 @app.route("/hello", methods=["POST", "GET"])
 def hello():
     email = request.form.get("email")
-    password = request.form.get("password")
-    print("password without the decode is "+ password)
-    password = bcrypt.generate_password_hash(password,10).decode('utf-8')
-    db.execute("INSERT INTO users (email, password) VALUES (:email, :password)",
-            {"email": email, "password": password})
-    
-    db.commit()
-    data = db.execute(
-         "SELECT email FROM users").fetchall()
-    data = str(data)
-    return(data)
+    check_email_in_db = db.execute("SELECT COUNT(*) FROM users WHERE email = :email", {"email": email}).fetchall()
+    if check_email_in_db[0][0] == 1 :
+            return("Sorry, this username has already been taken, please revisit the home page and try with a new email address")
+    else:
+            password = request.form.get("password")
+            password = bcrypt.generate_password_hash(password,10).decode('utf-8')
+            db.execute("INSERT INTO users (email, password) VALUES (:email, :password)", {"email": email, "password": password})
+            db.commit()
+            return("Thank you for sigining up")
 
 @app.route("/check", methods=["POST", "GET"])
 def check():
