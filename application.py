@@ -50,18 +50,9 @@ def check():
             if bcrypt.check_password_hash(retrive_password_from_db, password):
                 return("this works")
             else:
-                return("something is wrong")
+                return("Sorry, you have entered the wrong password.  Please visit the home page and try again.")
         
-            
-            # if abc == password:
-            #    return("all is good")
-            # else:
-            #     return ("Sorry you have entered an incorrect password")
-            # rs = db.execute("SELECT password FROM users WHERE email = :email" , {"email": email, "password": password}).fetchall()
-            # if rs[0][0] == 1 :
-            #     return ("Thank you for logging-in")
-            # else:
-            #     
+     
         
         else:
             return ("Sorry, you are not a registered user")
