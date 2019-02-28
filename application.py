@@ -29,6 +29,11 @@ def search_page():
     return render_template("search_page.html")
 
 
+@app.route("/search_result")
+def search_result():
+    return render_template("search_result.html")
+
+
 @app.route("/hello", methods=["POST", "GET"])
 def hello():
     email = request.form.get("email")

@@ -3,7 +3,7 @@
 
 <head>
     <!-- Mobile Specific Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <!-- Favicon-->
     <link rel="shortcut icon" href="{{ url_for('static',filename='img/DKLogo.png') }}">
     <!-- Author Meta -->
@@ -14,6 +14,7 @@
     <meta name="keywords" content="">
     <!-- meta character set -->
     <meta charset="UTF-8">
+
     <!-- Site Title -->
     <title>Project1 Sukh</title>
 
@@ -29,6 +30,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/login.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/search_result.css') }}">
 
 </head>
 
@@ -56,6 +58,9 @@
     <script src=" {{ url_for( 'static',filename='js/main.js' ) }} "></script>
 
     <script src=" {{ url_for( 'static',filename='js/loginForm.js' ) }}
+    "></script>
+
+    <script src=" {{ url_for( 'static',filename='js/search_result.js' ) }}
 	"></script>
 
 
