@@ -2039,6 +2039,7 @@ nav a:hover {
 
 .banner-content {
   float: left;
+  font-size:10vw;
 }
 
 
@@ -2046,6 +2047,7 @@ nav a:hover {
   font-size: 60px;
   font-weight: 600;
   line-height: 1.2em;
+  margin-top:  20px;
   margin-bottom: 20px;
   color: #f5204b;
   text-align: left;

@@ -32,8 +32,8 @@ a:hover {
     box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
     float: left;
     clear: both;
-    height: 450px;
-    width: 424px;
+    height: 100%;
+    width: 35%;
 }
 
 .tab-group {
