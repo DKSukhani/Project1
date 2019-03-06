@@ -2023,8 +2023,8 @@ nav a:hover {
 }
 
 #logoImg {
-  height: 50%;
-  width: 50%;
+  
+  max-width: 100%;
 }
 
 .banner-area .overlay-bg {
