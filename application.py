@@ -1,14 +1,13 @@
 import os
 import secret
-
-from flask import Flask, render_template, request
-
+from flask import Flask, render_template, request, flash, redirect, url_for
+from flask_login import current_user, login_user, logout_user, LoginManager
 from flask_bcrypt import Bcrypt
-
-
-from flask import jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
 
 
 engine = create_engine(secret.user_database_url)
@@ -16,6 +15,10 @@ db = scoped_session(sessionmaker(bind=engine))
 
 app = Flask(__name__)
 app.static_folder = 'static'
+app.secret_key = 'secret.secret_key'
+login = LoginManager(app)
+
+
 bcrypt = Bcrypt(app)
 
 
@@ -62,7 +65,7 @@ def check():
             "SELECT password FROM users WHERE email = :email", {"email": email}).fetchall()
         retrive_password_from_db = retrive_password_from_db[0][0]
         if bcrypt.check_password_hash(retrive_password_from_db, password):
-            return("this works")
+            return redirect(url_for('search_page'))
         else:
             return("Sorry, you have entered the wrong password.  Please visit the home page and try again.")
 
