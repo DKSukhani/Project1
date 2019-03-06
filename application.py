@@ -67,11 +67,12 @@ def check():
         if bcrypt.check_password_hash(retrive_password_from_db, password):
             return redirect(url_for('search_page'))
         else:
-            return("Sorry, you have entered the wrong password.  Please visit the home page and try again.")
-
+            flash('Invalid Password; Please try again')
+            return redirect(url_for('index'))
     else:
-        return ("Sorry, you are not a registered user")
-
+        flash('You are not a registered User. Request you to sign-up first')
+        return redirect(url_for('index'))
+    
 
 if __name__ == '__main__':
     app.run()
