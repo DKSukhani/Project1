@@ -1,7 +1,7 @@
 $(document).ready(function () {
     "use strict";
 
-    $('#flash_message').fadeOut(30000, "linear");
+    $('#flash_message').fadeOut(10000, "linear");
 
     var window_width = $(window).width(),
         window_height = window.innerHeight,

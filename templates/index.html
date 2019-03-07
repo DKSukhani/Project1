@@ -10,7 +10,7 @@
 						<img id="logoImg" src="{{ url_for('static',filename='img/DKLogo.png') }}" alt="">
 					</a>
 				</div>
-				<div class="
+				<!-- <div class="
 							 main-menubar d-flex align-items-center ">
 					<nav class=" hide ">
 						<a href="index.html
@@ -21,15 +21,32 @@
 					</nav>
 					<div class="menu-bar">
 						<span class="lnr lnr-menu"></span>
-					</div>
-					<!-- <div class="container" onclick="myFunction(this)">
+					</div> -->
+				<!-- <div class="container" onclick="myFunction(this)">
 							<div class="bar1"></div>
 							<div class="bar2"></div>
 							<div class="bar3"></div>
 						</div> -->
-				</div>
+				<!-- </div><div class="
+							 main-menubar d-flex align-items-center ">
+					<nav class=" hide ">
+						<a href="index.html
+							 ">Home</a>
+						<a href=" generic.html ">Generic</a>
+						<a href=" elements.html
+							 ">Elements</a>
+					</nav>
+					<div class="menu-bar">
+						<span class="lnr lnr-menu"></span>
+					</div> -->
+				<!-- <div class="container" onclick="myFunction(this)">
+							<div class="bar1"></div>
+							<div class="bar2"></div>
+							<div class="bar3"></div>
+						</div> -->
 			</div>
 		</div>
+	</div>
 	</div>
 </header>
 <!-- End Header Area -->
@@ -45,12 +62,6 @@
 						<span class="text-white">D K Sukh</h1>
 					</h1>
 				</div>
-
-				{% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-				<p id="flash_message" style="color: red">{{ message }}</p>
-				{% endfor %} {% endif %} {% endwith %}
-
-
 
 				<div class="form">
 					<ul class="tab-group">
@@ -114,12 +125,20 @@
 
 							</form>
 
+
+
 						</div>
 
 					</div>
 					<!-- tab-content -->
 
 				</div>
+
+				{% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+				<p id="flash_message" style="color: red">{{ message }}</p>
+				{% endfor %} {% endif %} {% endwith %}
+
+
 				<!-- /form -->
 			</div>
 		</div>
