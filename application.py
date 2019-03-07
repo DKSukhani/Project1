@@ -27,9 +27,25 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/search_page")
+@app.route("/search_page", methods=["POST"])
 def search_page():
-    return render_template("search_page.html")
+    email = request.form.get("login_email")
+    check_email_in_db = db.execute(
+        "SELECT COUNT(*) FROM users WHERE email = :email", {"email": email}).fetchall()
+    if check_email_in_db[0][0] == 1:
+        email = request.form.get("login_email")
+        password = request.form.get("login_password")
+        retrive_password_from_db = db.execute(
+            "SELECT password FROM users WHERE email = :email", {"email": email}).fetchall()
+        retrive_password_from_db = retrive_password_from_db[0][0]
+        if bcrypt.check_password_hash(retrive_password_from_db, password):
+            return render_template("search_page.html")
+        else:
+            flash('Invalid Password; Please try again')
+            return redirect(url_for('index'))
+    else:
+        flash('You are not a registered User. Request you to sign-up first')
+        return redirect(url_for('index'))
 
 
 @app.route("/search_result")
@@ -52,26 +68,7 @@ def hello():
         db.commit()
         return("Thank you for sigining up")
 
-
-@app.route("/check", methods=["POST", "GET"])
-def check():
-    email = request.form.get("login_email")
-    check_email_in_db = db.execute(
-        "SELECT COUNT(*) FROM users WHERE email = :email", {"email": email}).fetchall()
-    if check_email_in_db[0][0] == 1:
-        email = request.form.get("login_email")
-        password = request.form.get("login_password")
-        retrive_password_from_db = db.execute(
-            "SELECT password FROM users WHERE email = :email", {"email": email}).fetchall()
-        retrive_password_from_db = retrive_password_from_db[0][0]
-        if bcrypt.check_password_hash(retrive_password_from_db, password):
-            return redirect(url_for('search_page'))
-        else:
-            flash('Invalid Password; Please try again')
-            return redirect(url_for('index'))
-    else:
-        flash('You are not a registered User. Request you to sign-up first')
-        return redirect(url_for('index'))
+  
     
 
 if __name__ == '__main__':
