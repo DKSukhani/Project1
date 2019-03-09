@@ -31,6 +31,9 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/search_result.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/search_page.css') }}">
+
 
 </head>
 
@@ -59,7 +62,11 @@
     "></script>
 
     <script src=" {{ url_for( 'static',filename='js/search_result.js' ) }}
-	"></script>
+    "></script>
+
+    <script src=" {{ url_for( 'static',filename='js/extention/choices.js' ) }}
+  "></script>
+
 
 
 </body>

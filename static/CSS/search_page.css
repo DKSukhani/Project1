@@ -877,7 +877,14 @@ legend {
 .s003 form .inner-form .input-field input:hover, .s003 form .inner-form .input-field input:focus {
   box-shadow: none;
   outline: 0;
-  border-color: #fff;
+  /* border-color: #fff; */
+}
+
+.input-select {
+  margin: auto;
+  width: 50%;
+  
+  padding: 10px;
 }
 
 .s003 form .inner-form .input-field.first-wrap {
