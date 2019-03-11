@@ -21,6 +21,10 @@ login = LoginManager(app)
 
 bcrypt = Bcrypt(app)
 
+@app.route("/test_page", methods=["POST", "GET"])
+def test_page():
+    search_string = request.form
+    return(search_string)
 
 @app.route("/")
 def index():
