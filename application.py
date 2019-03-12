@@ -5,6 +5,7 @@ from flask_login import current_user, login_user, logout_user, LoginManager
 from flask_bcrypt import Bcrypt
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.sql import text
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
@@ -25,13 +26,11 @@ bcrypt = Bcrypt(app)
 
 @app.route("/test_page", methods=["POST", "GET"])
 def test_page():
-    selection_option_heading_1 = request.form.get("selection_option_heading").lower()
-    search_string_1 = "%" + request.form.get("search_string").lower() + "%"
-    return(selection_option_heading_1 + " " + search_string_1)
-    
-
-
-
+   selection_option_heading_1 = request.form.get("selection_option_heading").lower()
+   search_string_1 = request.form.get("search_string").lower()
+   search_string_1 = ("'%"+search_string_1+"%'")
+   check_books_in_db = db2.execute(f"SELECT isbn, title, author, year FROM books WHERE {selection_option_heading_1} ILIKE {search_string_1} LIMIT 50").fetchall()
+   return str(check_books_in_db)
 
     
 
