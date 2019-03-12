@@ -11,7 +11,9 @@ from wtforms.validators import DataRequired
 
 
 engine = create_engine(secret.user_database_url)
+engine2 = create_engine(secret.books_database_url)
 db = scoped_session(sessionmaker(bind=engine))
+db2 = scoped_session(sessionmaker(bind=engine2))
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -25,7 +27,13 @@ bcrypt = Bcrypt(app)
 def test_page():
     selection_option_heading_1 = request.form.get("selection_option_heading").lower()
     search_string_1 = "%" + request.form.get("search_string").lower() + "%"
-    return (selection_option_heading_1 +  search_string_1)
+    return(selection_option_heading_1 + " " + search_string_1)
+    
+
+
+
+
+    
 
 @app.route("/")
 def index():
