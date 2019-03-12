@@ -23,12 +23,9 @@ bcrypt = Bcrypt(app)
 
 @app.route("/test_page", methods=["POST", "GET"])
 def test_page():
-    selection_option_heading_1 = request.form.get("selection_option_heading")
-    search_string_1 = request.form.get("search_string")
+    selection_option_heading_1 = request.form.get("selection_option_heading").lower()
+    search_string_1 = "%" + request.form.get("search_string").lower() + "%"
     return (selection_option_heading_1 +  search_string_1)
-
-    # search_string_1 = request.form.get("search_string")
-    # return(search_string_1)
 
 @app.route("/")
 def index():
