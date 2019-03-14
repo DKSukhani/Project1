@@ -69,18 +69,19 @@ def search_pg():
     #         flash('You are not a registered User. Request you to sign-up first')
     #         return redirect(url_for('index'))
 
-@app.route("/test_page", methods=["POST", "GET"])
-def test_page():
+@app.route("/table", methods=["POST", "GET"])
+def table():
     selection_option_heading_1 = request.form.get("selection_option_heading").lower()
     search_string_1 = request.form.get("search_string").lower()
     search_string_1 = ("'%"+search_string_1+"%'")
     check_books_in_db = db2.execute(f"SELECT isbn, title, author, year FROM books WHERE {selection_option_heading_1} ILIKE {search_string_1} LIMIT 50").fetchall()
-    for i in check_books_in_db:
-        ISBN_result = str(i[0])
-        Title_result = str(i[1])
-        Author_result = str(i[2])
-        Year_result = str(i[3])
-        return str(ISBN_result + Title_result + Author_result + Year_result)
+    return render_template("table.html", results = check_books_in_db)
+    # for i in check_books_in_db:
+    #     ISBN_result = str(i[0])
+    #     Title_result = str(i[1])
+    #     Author_result = str(i[2])
+    #     Year_result = str(i[3])
+    #     return str(ISBN_result + Title_result + Author_result + Year_result)
     # if request.method == "GET":
     #     flash('Please sign_in first!')
     #     return redirect(url_for('index'))

@@ -1,7 +1,20 @@
-<table>
+{% extends "layout.html" %} {% block body %}
+
+
+<h1>Testing if the HTML is coming or not</h1>
+
+<table border="1">
     <tr>
         <th>ISBN</th>
-        <th>Title</th>
         <th>Author</th>
-        <th>Year of Release</th>
+        <th>Title</th>
+        <th>Year of publishing</th>
     </tr>
+
+    {% for result in results %}
+    <tr>
+        {% for elem in result %}
+        <td>{{elem}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %} {% endblock %}
