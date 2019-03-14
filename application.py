@@ -69,35 +69,14 @@ def search_pg():
     #         flash('You are not a registered User. Request you to sign-up first')
     #         return redirect(url_for('index'))
 
-@app.route("/table", methods=["POST", "GET"])
-def table():
+@app.route("/search_result", methods=["POST", "GET"])
+def search_result():
     selection_option_heading_1 = request.form.get("selection_option_heading").lower()
     search_string_1 = request.form.get("search_string").lower()
     search_string_1 = ("'%"+search_string_1+"%'")
     check_books_in_db = db2.execute(f"SELECT isbn, title, author, year FROM books WHERE {selection_option_heading_1} ILIKE {search_string_1} LIMIT 50").fetchall()
-    return render_template("table.html", results = check_books_in_db)
-    # for i in check_books_in_db:
-    #     ISBN_result = str(i[0])
-    #     Title_result = str(i[1])
-    #     Author_result = str(i[2])
-    #     Year_result = str(i[3])
-    #     return str(ISBN_result + Title_result + Author_result + Year_result)
-    # if request.method == "GET":
-    #     flash('Please sign_in first!')
-    #     return redirect(url_for('index'))
-    # if user_signed_in == 1:
-        # selection_option_heading_1 = request.form.get("selection_option_heading").lower()
-        # search_string_1 = request.form.get("search_string").lower()
-        # search_string_1 = ("'%"+search_string_1+"%'")
-        # check_books_in_db = db2.execute(f"SELECT isbn, title, author, year FROM books WHERE {selection_option_heading_1} ILIKE {search_string_1} LIMIT 50").fetchall()
-        # return str(check_books_in_db)
-    # else:
-    #     flash('Please sign_in first!')
-    #     return redirect(url_for('index'))
+    return render_template("search_result.html", results = check_books_in_db)   
 
-@app.route("/search_result")
-def search_result():
-    return render_template("search_result.html")
 
 
 if __name__ == '__main__':
