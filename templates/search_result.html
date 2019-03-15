@@ -81,6 +81,7 @@ background-color: #a598ee;">
 	border-collapse: collapse; 
 	margin:50px auto;">
         <tr>
+            <th>Book Cover</th>
             <th>ISBN</th>
             <th>Author</th>
             <th>Title</th>
@@ -89,6 +90,10 @@ background-color: #a598ee;">
 
         {% for result in results %}
         <tr>
+
+            <td>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MVijxNYRrCtn6qj0zxe8ItNZ_VXLugUGZ-3pfE1K1_z7NA5A">
+            </td>
             {% for elem in result %}
             <td data-column="">{{elem}}</td>
             {% endfor %}
