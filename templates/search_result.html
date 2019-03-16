@@ -74,9 +74,10 @@
     }
 </style>
 
-
-<di class="s003" style="margin: 0 auto;
-background-color: #a598ee;">
+<!-- class="s003"  -->
+<!-- style="margin: 0 auto;
+background-color: #a598ee;" -->
+<div>
     <table border="1" style="width: 750px; 
 	border-collapse: collapse; 
 	margin:50px auto;">
@@ -91,13 +92,45 @@ background-color: #a598ee;">
         {% for result in results %}
         <tr>
 
-            <td>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MVijxNYRrCtn6qj0zxe8ItNZ_VXLugUGZ-3pfE1K1_z7NA5A">
+            <td class="media book showcase" data-isbn="{{ result[0]|string }}">
+                <img src="" alt="" class="thumbnail" />
             </td>
             {% for elem in result %}
             <td data-column="">{{elem}}</td>
             {% endfor %}
         </tr>
-        {% endfor %}
-        </div>
-        {% endblock %}
+        {% endfor %} {% for result in results %} {% endfor %} </div>
+
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
+</script>
+<script>
+
+    $(document).ready(function () {
+        var books = $('.book');
+        $(".book").each(function () {
+            let isbn = $(this).attr("data-isbn");
+            $.ajax({
+                dataType: 'json',
+                url: 'https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn,
+                // success: handleResponse
+            }).done(data => {
+                $.each(data.items, function (i, item) {
+                    var thumb = item.volumeInfo.imageLinks.thumbnail;
+                    let s = `[data-isbn="${isbn}"]`;
+                    $(s).attr('src', thumb);
+                });
+
+            });
+
+        });
+
+
+        function handleResponse(response) {
+        }
+
+    });
+
+</script> {% endblock %}

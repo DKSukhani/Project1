@@ -74,7 +74,7 @@ def search_result():
     selection_option_heading_1 = request.form.get("selection_option_heading").lower()
     search_string_1 = request.form.get("search_string").lower()
     search_string_1 = ("'%"+search_string_1+"%'")
-    check_books_in_db = db2.execute(f"SELECT isbn, title, author, year FROM books WHERE {selection_option_heading_1} ILIKE {search_string_1} LIMIT 50").fetchall()
+    check_books_in_db = db2.execute(f"SELECT isbn, title, author, year FROM books WHERE {selection_option_heading_1} ILIKE {search_string_1} LIMIT 3").fetchall()
     return render_template("search_result.html", results = check_books_in_db)   
 
 
