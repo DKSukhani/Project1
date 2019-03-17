@@ -1,5 +1,5 @@
 import os
-import secret
+# import secret
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_login import current_user, login_user, logout_user, LoginManager
 from flask_bcrypt import Bcrypt
@@ -11,14 +11,14 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
 
 
-engine = create_engine(secret.user_database_url)
-engine2 = create_engine(secret.books_database_url)
+engine = create_engine(user_database_url)
+engine2 = create_engine(books_database_url)
 db = scoped_session(sessionmaker(bind=engine))
 db2 = scoped_session(sessionmaker(bind=engine2))
 
 app = Flask(__name__)
 app.static_folder = 'static'
-app.secret_key = 'secret.secret_key'
+app.secret_key = 'secret_key'
 login = LoginManager(app)
 
 
