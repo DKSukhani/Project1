@@ -74,10 +74,11 @@ def search_result():
     selection_option_heading_1 = request.form.get("selection_option_heading").lower()
     search_string_1 = request.form.get("search_string").lower()
     search_string_1 = ("'%"+search_string_1+"%'")
-    check_books_in_db = db2.execute(f"SELECT isbn, title, author, year FROM books WHERE {selection_option_heading_1} ILIKE {search_string_1} LIMIT 3").fetchall()
+    check_books_in_db = db2.execute(f"SELECT isbn, title, author, year FROM books WHERE {selection_option_heading_1} ILIKE {search_string_1}").fetchall()
     return render_template("search_result.html", results = check_books_in_db)   
 
 
 
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
