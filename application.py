@@ -84,4 +84,4 @@ def search_result():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='host=dipesh-book-app.herokuapp.com', port=port)
+    app.run(host='dipesh-book-app.herokuapp.com', port=port)
