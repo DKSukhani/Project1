@@ -84,4 +84,4 @@ def search_result():
 
 if __name__ == '__main__':
         port = int(os.environ.get('PORT', 33507)) 
-        app.run(debug=True, port=33507)
+        app.run(host="132.147.98.184", debug=True, port=33507)
