@@ -80,6 +80,10 @@ def search_result():
     check_books_in_db = db2.execute(f"SELECT isbn, title, author, year FROM books WHERE {selection_option_heading_1} ILIKE {search_string_1}").fetchall()
     return render_template("search_result.html", results = check_books_in_db)   
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
 
 
 if __name__ == '__main__':
