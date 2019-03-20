@@ -9,7 +9,7 @@ try:
     cursor = connection.cursor()
     # Print PostgreSQL Connection properties
     print("Connection successful")     
-    cursor.execute("SELECT * FROM users;")
+    cursor.execute("SELECT * FROM users;") 
     record = cursor.fetchall()
     print(record)
 except (Exception, psycopg2.Error) as error :
