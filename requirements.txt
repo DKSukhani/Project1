@@ -5,3 +5,4 @@ flask-login
 Flask-WTF
 cryptography
 flask_bcrypt
+psycopg2
