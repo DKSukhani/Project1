@@ -71,7 +71,7 @@ def search_pg():
                 retrive_password_from_db = retrive_password_from_db[0][0]
                 if bcrypt.check_password_hash(retrive_password_from_db, password):
                     session['user'] = str(email)
-                    # flash("Logged in as: " + email )
+                    # flash("Logged in as: " + email )  this is working and hence this is commented out
                     return render_template("search_page.html")
                 else:
                     flash('Invalid Password; Please try again')
