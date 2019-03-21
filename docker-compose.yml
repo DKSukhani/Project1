@@ -7,27 +7,9 @@ services:
       - "5000:5000"
     volumes:
       - .:/home
-    depends_on:
-      - db
     environment:
       FLASK_APP: "application"
       FLASK_ENV: "development"
       FLASK_DEBUG: 1
       LC_ALL: "C.UTF-8"
       LANG: "C.UTF-8"
-    networks:
-      - webnet
-
-  db:
-    image: postgres
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: "dipesh"
-      POSTGRES_PASSWORD: "dipesh123"
-    networks:
-      - webnet
-  
-
-networks:
-  webnet:

@@ -1,4 +1,8 @@
 Flask==1.0.2
 SQLAlchemy
+psycopg2
 flask-login
-flask_wtf
+Flask-WTF
+cryptography
+flask_bcrypt
+psycopg2
