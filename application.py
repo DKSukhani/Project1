@@ -9,6 +9,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from flask_wtf import FlaskForm
 from wtforms import Form, StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
+from functools import wraps
 
 user_database_url = environ.get('DATABASE_URL', secret.user_database_url)
 books_database_url =  environ.get('HEROKU_POSTGRESQL_BLACK_URL', secret.books_database_url)
@@ -20,6 +21,15 @@ db2 = scoped_session(sessionmaker(bind=engine2))
 
 class MyForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
+
+def ensure_logged_in(fn):
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        if not session.get('user'):
+            flash("Please log in first")
+            return redirect(url_for('index'))
+        return fn(*args, **kwargs)
+    return wrapper
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -88,8 +98,8 @@ def search_pg():
 
 
 @app.route("/search_result", methods=["POST", "GET"])
+@ensure_logged_in
 def search_result():
-
     selection_option_heading_1 = request.form.get("selection_option_heading").lower()
     search_string_1 = request.form.get("search_string").lower()
     search_string_1 = ("'%"+search_string_1+"%'")
