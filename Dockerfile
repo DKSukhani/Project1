@@ -7,4 +7,4 @@ RUN pip3 install -r requirements.txt
 RUN pip3 install psycopg2
 RUN pip3 install flask-bcrypt
 RUN pip3 install flask-login
-RUN python3 application.py
+CMD python3 application.py
