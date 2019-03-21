@@ -1,4 +1,7 @@
-{% extends "layout.html" %} {% block body %}
+{% extends "layout.html" %} {% block body %} {% with messages = get_flashed_messages() %} {% if messages %} {% for message
+in messages %}
+<p id="flash_message" style="color: red">{{ message }}</p>
+{% endfor %} {% endif %} {% endwith %}
 
 <div class="s003">
   <form action="{{ url_for('search_result') }}" method="POST" id="search_form">
